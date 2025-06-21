@@ -3,9 +3,12 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', [LoginController::class, 'register'])
-    ->name('register');
+Route::post("/register", [LoginController::class, "register"])
+    ->name("register");
+Route::post("/login", [LoginController::class, "login"])
+    ->name("login");
 
-Route::middleware('auth:sanctum')->group(function () {
-    //
+Route::middleware("auth:sanctum")->group(function () {
+    Route::post("/logout", [LoginController::class, "logout"])
+        ->name("logout");
 });
